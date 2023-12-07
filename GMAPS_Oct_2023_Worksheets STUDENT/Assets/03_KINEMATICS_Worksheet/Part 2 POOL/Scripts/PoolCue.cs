@@ -21,7 +21,7 @@ public class PoolCue : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             var startLinePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Start line drawing
-            if (ball != null && ball.IsCollidingWith(startLinePos.x, startLinePos.y))  //checks if the ball not empty and gets the startLinePos x and y coordinates based on the input o the mouse
+            if (ball != null && ball.IsCollidingWith(startLinePos.x, startLinePos.y))  //checks if the ball not empty and gets the startLinePos x and y coordinates based on the input of the mouse 
             {
                 drawnLine = lineFactory.GetLine(startLinePos, ball.transform.position, 0.3f, Color.black); //calls line factory to make line , starts line drawing  till the mouse position
                 drawnLine.EnableDrawing(true); //line is seen as it is active 

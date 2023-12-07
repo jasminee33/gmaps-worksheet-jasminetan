@@ -5,7 +5,7 @@ using UnityEngine;
 public class HMatrix2D
 {
     //Q1a)
-    public float[,] Entries { get; set; } = new float[3, 3]; //creating 3x3 matrix using entries
+    public float[,] Entries { get; set; } = new float[3, 3]; //declare a 3x3 matrix to store the matrix values using entries array
 
     public HMatrix2D()
     {
@@ -36,17 +36,17 @@ public class HMatrix2D
              float m20, float m21, float m22)
     {
 
-        // First row
+        // First row of the matix 
         Entries[0, 0] = m00;
         Entries[0, 1] = m01;
         Entries[0, 2] = m02;
 
-        // Second row
+        // First row of the matix 
         Entries[1, 0] = m10;
         Entries[1, 1] = m11;
         Entries[1, 2] = m12;
 
-        // Third row
+        // First row of the matix 
         Entries[2, 0] = m20;
         Entries[2, 1] = m21;
         Entries[2, 2] = m22;
@@ -157,28 +157,30 @@ public class HMatrix2D
     //    return // your code here
     //}
 
+
+    //Creating the Identity Matrix 
     public void SetIdentity()
     {
         //Q1b)
-        //for (int y = 0; y < 3; y++) //since the matrix i 3x3, the matrix must be 0,1,2 which is y<3, starts a loop and for each row to start  
-        //{
-        //    for (int x = 0; x < 3; x++) // create for each column
-        //    {
-        //        if (x == y) //if row is equal to column 
-        //        {
-        //            Entries[y, x] = 1; //the matrix will be 1
-        //        }
-        //        else
-        //        {
-        //            Entries[y, x] = 0; // else it will be 0 
-        //        }
-        //    }
-        //}
+        for (int y = 0; y < 3; y++) //since the matrix i 3x3, the matrix must be 0,1,2 which is y<3, starts a loop and for each row to start  
+        {
+            for (int x = 0; x < 3; x++) // create for each column
+            {
+                if (x == y) //if row is equal to column 
+                {
+                    Entries[y, x] = 1; //the matrix will be 1
+                }
+                else
+                {
+                    Entries[y, x] = 0; // else it will be 0 
+                }
+            }
+        }
 
-        //Q1c) ternar operator - variable = (condition) ? expressionTrue : expressionFalse;
-        for (int y = 0; y < 3; y++)
-            for (int x = 0; x < 3; x++)
-                Entries[y, x] = x == y ? 1 : 0;
+        ////Q1c) ternar operator - variable = (condition) ? expressionTrue : expressionFalse;
+        //for (int y = 0; y < 3; y++) 
+        //    for (int x = 0; x < 3; x++)
+        //        Entries[y, x] = x == y ? 1 : 0; // checks if the the condition where row index is = to the column index if yes the it will print 1 :(else) 0
 
 
     }

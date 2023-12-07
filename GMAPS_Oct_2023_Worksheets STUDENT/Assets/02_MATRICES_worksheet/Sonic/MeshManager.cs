@@ -24,16 +24,17 @@ public class MeshManager : MonoBehaviour
 
     void Awake()
     {
-        meshFilter = GetComponent<MeshFilter>();
+        meshFilter = GetComponent<MeshFilter>(); 
         originalMesh = meshFilter.sharedMesh;
         clonedMesh = new Mesh();
+        
+        // Takes the characteristics of the original mesh and puts it in the cloned mesh
         clonedMesh.name = "clone";
         clonedMesh.vertices = originalMesh.vertices;
         clonedMesh.triangles = originalMesh.triangles;
         clonedMesh.normals = originalMesh.normals;
         clonedMesh.uv = originalMesh.uv;
         meshFilter.mesh = clonedMesh;
-
         vertices = clonedMesh.vertices;
         triangles = clonedMesh.triangles;
     }
