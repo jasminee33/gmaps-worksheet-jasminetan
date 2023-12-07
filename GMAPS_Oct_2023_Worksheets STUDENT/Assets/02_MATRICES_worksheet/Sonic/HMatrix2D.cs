@@ -183,15 +183,28 @@ public class HMatrix2D
 
     }
 
-    //public void SetTranslationMat(float transX, float transY)
-    //{
-    //    // your code here
-    //}
+    public void SetTranslationMat(float transX, float transY)
+    {
+        //Q3b
+        SetIdentity(); // Start with the identity matrix
 
-    //public void SetRotationMat(float rotDeg)
-    //{
-    //    // your code here
-    //}
+        // Set the translation 
+        Entries[0, 2] = transX;
+        Entries[1, 2] = transY;
+    }
+
+    public void SetRotationMat(float rotDeg)
+    {
+        //Q3a
+        SetIdentity();
+        float rad = rotDeg * Mathf.Deg2Rad; //converting to radians 
+
+        //Rotation matrix , only x and y axis are being changed
+        Entries[0, 0] = Mathf.Cos(rad); //cos0
+        Entries[0, 1] = -Mathf.Sin(rad); //-sin0
+        Entries[1, 0] = Mathf.Sin(rad);  //sin0
+        Entries[1, 1] = Mathf.Cos(rad);  //cos0
+    }
 
     //public void SetScalingMat(float scaleX, float scaleY)
     //{
