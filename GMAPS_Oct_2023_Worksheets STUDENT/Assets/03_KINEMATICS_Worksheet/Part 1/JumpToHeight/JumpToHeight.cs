@@ -19,8 +19,8 @@ public class JumpToHeight : MonoBehaviour
         //u = sqrt(v * v - 2 as)
         //v = 0, u = ?, a = Physics.gravity, s = Height
 
-        float u = Mathf.Sqrt(-2 * Physics.gravity.y * Height); // used y as only the y axis changes 
-        rb.velocity = new Vector3(0, u, 0);
+        float u = Mathf.Sqrt(-2 * Physics.gravity.y * Height); // to calculate the starting velocity 'u' including the gravity and the height to reach 
+        rb.velocity = new Vector3(0, u, 0); // sets the rb velocity to make it reach the height 
 
         //float jumpForce = Mathf.Sqrt(-2 * Physics2D.gravity.y * Height);
         //rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
