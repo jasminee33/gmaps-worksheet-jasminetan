@@ -201,9 +201,9 @@ public class HMatrix2D
 
         //Rotation matrix , only x and y axis are being changed
         Entries[0, 0] = Mathf.Cos(rad); // cos0
-        Entries[0, 1] = -Mathf.Sin(rad); // -sin0
-        Entries[1, 0] = Mathf.Sin(rad);  // sin0
-        Entries[1, 1] = Mathf.Cos(rad);  // cos0
+    Entries[0, 1] = -Mathf.Sin(rad); // -sin0
+    Entries[1, 0] = Mathf.Sin(rad);  // sin0
+    Entries[1, 1] = Mathf.Cos(rad);  // cos0
     }
 
     //public void SetScalingMat(float scaleX, float scaleY)

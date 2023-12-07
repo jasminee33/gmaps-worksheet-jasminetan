@@ -96,9 +96,6 @@ public class Ball2D : MonoBehaviour
 
     private void UpdateBall2DPhysics(float deltaTime)
     {
-        // Implement your physics logic here if needed
-        // For basic movement, you can use the following:
-
         Position.x += Velocity.x * deltaTime;
         Position.y += Velocity.y * deltaTime;
 

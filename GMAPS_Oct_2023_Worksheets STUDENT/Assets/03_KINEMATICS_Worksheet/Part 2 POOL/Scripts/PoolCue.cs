@@ -22,7 +22,7 @@ public class PoolCue : MonoBehaviour
             var startLinePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Start line drawing
             if (ball != null && ball.IsCollidingWith(startLinePos.x, startLinePos.y))  //gets the startLinePos x and y coordinates 
             {
-                drawnLine = lineFactory.GetLine(startLinePos, Camera.main.ScreenToWorldPoint(Input.mousePosition), 0.3f, Color.black); //calls line factory to make line , starts line drawing  till the mouse psition
+                drawnLine = lineFactory.GetLine(startLinePos, ball.transform.position, 0.3f, Color.black); //calls line factory to make line , starts line drawing  till the mouse psition
                 drawnLine.EnableDrawing(true);
             }
         }
