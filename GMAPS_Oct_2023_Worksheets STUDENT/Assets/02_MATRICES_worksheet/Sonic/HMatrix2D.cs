@@ -69,7 +69,7 @@ public class HMatrix2D
 
         for (int y = 0; y < 3; y++) // loops and create rows
             for (int x = 0; x < 3; x++) //loops to create the coloumn 
-                subtractionResult.Entries[y, x] = left.Entries[y, x] + right.Entries[y, x]; //
+                subtractionResult.Entries[y, x] = left.Entries[y, x] - right.Entries[y, x]; //
         return subtractionResult;
     }
 
@@ -166,11 +166,11 @@ public class HMatrix2D
         //    {
         //        if (x == y) //if row is equal to column 
         //        {
-        //            entries[y, x] = 1; //the matrix will be 1
+        //            Entries[y, x] = 1; //the matrix will be 1
         //        }
         //        else
         //        {
-        //            entries[y, x] = 0; // else it will be 0 
+        //            Entries[y, x] = 0; // else it will be 0 
         //        }
         //    }
         //}
@@ -200,10 +200,10 @@ public class HMatrix2D
         float rad = rotDeg * Mathf.Deg2Rad; //converting to radians 
 
         //Rotation matrix , only x and y axis are being changed
-        Entries[0, 0] = Mathf.Cos(rad); //cos0
-        Entries[0, 1] = -Mathf.Sin(rad); //-sin0
-        Entries[1, 0] = Mathf.Sin(rad);  //sin0
-        Entries[1, 1] = Mathf.Cos(rad);  //cos0
+        Entries[0, 0] = Mathf.Cos(rad); // cos0
+        Entries[0, 1] = -Mathf.Sin(rad); // -sin0
+        Entries[1, 0] = Mathf.Sin(rad);  // sin0
+        Entries[1, 1] = Mathf.Cos(rad);  // cos0
     }
 
     //public void SetScalingMat(float scaleX, float scaleY)

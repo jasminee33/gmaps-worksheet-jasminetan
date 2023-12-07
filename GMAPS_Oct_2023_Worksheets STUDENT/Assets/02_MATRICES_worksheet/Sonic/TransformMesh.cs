@@ -22,30 +22,43 @@ public class TransformMesh : MonoBehaviour
         meshManager = GetComponent<MeshManager>(); //a reference to MeshManager
         pos = new HVector2D(gameObject.transform.position.x, gameObject.transform.position.y);
         //store the current position of the Sonic sprite
+        
 
-        // Your code here
+        // Move the sprite by (1,1)
+        Translate(1, 1);
+
+        Rotate(-45);
+        
     }
 
 
     void Translate(float x, float y)
     {
+        //Q5b
         transformMatrix.SetIdentity(); 
-        transformMatrix.SetTranslationMatrix(x, y); // translating the sprite based in the parameters
+        transformMatrix.SetTranslationMat(x, y); // translating the sprite based in the parameters
         Transform(); //calls the Transform 
 
         pos = transformMatrix * pos;
     }
 
-    //void Rotate(float angle)
-    //{
-    //    transformMatrix.SetIdentity();
+    void Rotate(float angle)
+    {
+        HMatrix2D toOriginMatrix = new HMatrix2D();
+        HMatrix2D fromOriginMatrix = new HMatrix2D();
+        HMatrix2D rotateMatrix = new HMatrix2D();
 
-    //    // Your code here
+        toOriginMatrix.SetTranslationMat(-pos.x, -pos.y);
+        fromOriginMatrix.SetTranslationMat(pos.x, pos.y);
 
-    //    transformMatrix = fromOriginMatrix * // Your code here;
+        rotateMatrix.SetRotationMat(angle);
 
-    //    Transform();
-    //}
+        transformMatrix.SetIdentity();
+        transformMatrix = toOriginMatrix * fromOriginMatrix * rotateMatrix;
+
+
+        Transform();
+    }
 
     private void Transform()
     {
@@ -53,11 +66,11 @@ public class TransformMesh : MonoBehaviour
 
         for (int i = 0; i < vertices.Length; i++)
         {
-            // Your code here
-            HVector2D vertex = new HVector2D(vertices[i].x, vertices[i].y);
+            //Q5c
+            HVector2D vert = new HVector2D(vertices[i].x, vertices[i].y);
             vert = transformMatrix * vert;
             vertices[i].x = vert.x;
-            vertices[i].y = vert.y;
+            vertices[i].y = vert.y; //update x and
         }
 
         meshManager.clonedMesh.vertices = vertices;
