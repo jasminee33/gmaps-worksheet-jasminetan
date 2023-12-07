@@ -20,47 +20,47 @@ public class HMatrix2D
     //    h = 1.0f;
     //}
 
-    public HMatrix2D(float[,] multiArray)
+    public HMatrix2D(float[,] multiArray) 
     {
-        for (int y = 0; y < 3; y++) //Setting the row 
+        for (int y = 0; y < 3; y++) //Setting the row through for loop as it is 3x3 therefore y<3 
         {
-            for(int x = 0; x < 3; x++) //setting the columns
+            for(int x = 0; x < 3; x++) //setting the columns through for loop as it is 3x3 therefore x<3 (index include 0)
             {
-                Entries[x, y] = multiArray[x, y]; // multiArray to allow for matrix of rows and columns 
+                Entries[x, y] = multiArray[x, y]; // multiArray to allow for matrix of rows and columns to the Entries[x,y]
             }
         }
     }
 
     public HMatrix2D(float m00, float m01, float m02,
              float m10, float m11, float m12,
-             float m20, float m21, float m22)
+             float m20, float m21, float m22) //the elements of the matrix to allow numers to pass through the parameters 
     {
 
         // First row of the matix 
-        Entries[0, 0] = m00;
-        Entries[0, 1] = m01;
-        Entries[0, 2] = m02;
+        Entries[0, 0] = m00; //assigned to the 1st row, 1st column of the matrix
+        Entries[0, 1] = m01; //assigned to the 1st row, 2st column of the matrix
+        Entries[0, 2] = m02; 
 
         // First row of the matix 
-        Entries[1, 0] = m10;
-        Entries[1, 1] = m11;
+        Entries[1, 0] = m10; //assigned to the 2nd row, 1st column of the matrix
+        Entries[1, 1] = m11; //assigned to the 2nd row, 2st column of the matrix
         Entries[1, 2] = m12;
 
         // First row of the matix 
-        Entries[2, 0] = m20;
-        Entries[2, 1] = m21;
+        Entries[2, 0] = m20; //assigned to the 3rd row, 1st column of the matrix
+        Entries[2, 1] = m21; //assigned to the 3rd row, 2st column of the matrix
         Entries[2, 2] = m22;
     }
 
     public static HMatrix2D operator +(HMatrix2D left, HMatrix2D right)
     {
         //Q2a
-        HMatrix2D additionResult = new HMatrix2D();
+        HMatrix2D additionResult = new HMatrix2D(); //create new matrix 
 
         for (int y = 0; y < 3; y++) // loops and create rows
             for (int x = 0; x < 3; x++) //loops to create the coloumn 
-                additionResult.Entries[y, x] = left.Entries[y, x] + right.Entries[y, x]; // adds the (x,y)
-        return additionResult;
+                additionResult.Entries[y, x] = left.Entries[y, x] + right.Entries[y, x]; // adds the element of the left matrix and the right matrix 
+        return additionResult; //returns the result of the matrix after adding the left and right Matrix2D
     }
 
     public static HMatrix2D operator -(HMatrix2D left, HMatrix2D right)
@@ -69,8 +69,8 @@ public class HMatrix2D
 
         for (int y = 0; y < 3; y++) // loops and create rows
             for (int x = 0; x < 3; x++) //loops to create the coloumn 
-                subtractionResult.Entries[y, x] = left.Entries[y, x] - right.Entries[y, x]; //
-        return subtractionResult;
+                subtractionResult.Entries[y, x] = left.Entries[y, x] - right.Entries[y, x]; // subtracts the element of the left matrix and the right matrix element 
+        return subtractionResult; //returns the result of the matrix after subtracting the left and right Matrix2D
     }
 
     public static HMatrix2D operator *(HMatrix2D left, float scalar)
@@ -79,8 +79,8 @@ public class HMatrix2D
 
         for (int y = 0; y < 3; y++)
             for (int x = 0; x < 3; x++)
-                multiplicationResult.Entries[y, x] = left.Entries[y, x] * scalar;
-        return multiplicationResult;
+                multiplicationResult.Entries[y, x] = left.Entries[y, x] * scalar; // mulitiplies the left element by a scalar value 
+        return multiplicationResult; //returns the result of the matrix after multiplying the left matrix and the valjue 
     }
 
     // Note that the second argument is a HVector2D object
@@ -89,8 +89,8 @@ public class HMatrix2D
     {
         return new HVector2D
         (
-            left.Entries[0, 0] * right.x + left.Entries[0, 1] * right.y, //
-            left.Entries[1, 0] * right.x + left.Entries[1, 1] * right.y //calculate the 
+            left.Entries[0, 0] * right.x + left.Entries[0, 1] * right.y, //calculate first element of 1st row of left with the x of the right vector
+            left.Entries[1, 0] * right.x + left.Entries[1, 1] * right.y //calculate second element of 1st row  of left with the y c of the right vector
 
         );
     }
