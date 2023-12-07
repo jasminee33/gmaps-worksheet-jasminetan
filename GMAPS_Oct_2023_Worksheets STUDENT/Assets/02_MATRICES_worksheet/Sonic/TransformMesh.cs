@@ -27,7 +27,7 @@ public class TransformMesh : MonoBehaviour
         // Move the sprite by (1,1)
         Translate(1, 1);
 
-        Rotate(-45);
+        Rotate(-45); //rotate by -45 degree
         
     }
 
@@ -44,17 +44,17 @@ public class TransformMesh : MonoBehaviour
 
     void Rotate(float angle)
     {
-        HMatrix2D toOriginMatrix = new HMatrix2D();
-        HMatrix2D fromOriginMatrix = new HMatrix2D();
-        HMatrix2D rotateMatrix = new HMatrix2D();
+        HMatrix2D toOriginMatrix = new HMatrix2D(); //create matrix for translation 
+        HMatrix2D fromOriginMatrix = new HMatrix2D(); //create matrix for translation 
+        HMatrix2D rotateMatrix = new HMatrix2D(); //create matrix for rotation
 
-        toOriginMatrix.SetTranslationMat(-pos.x, -pos.y);
-        fromOriginMatrix.SetTranslationMat(pos.x, pos.y);
+        toOriginMatrix.SetTranslationMat(-pos.x, -pos.y); //translate to origin is negative
+        fromOriginMatrix.SetTranslationMat(pos.x, pos.y); //translate back to original position
 
-        rotateMatrix.SetRotationMat(angle);
+        rotateMatrix.SetRotationMat(angle); //sets the angle 
 
-        transformMatrix.SetIdentity();
-        transformMatrix = toOriginMatrix * fromOriginMatrix * rotateMatrix;
+        transformMatrix.SetIdentity(); 
+        transformMatrix = toOriginMatrix * fromOriginMatrix * rotateMatrix; // calculate the matrix transformation by multiplying
 
 
         Transform();
@@ -67,10 +67,10 @@ public class TransformMesh : MonoBehaviour
         for (int i = 0; i < vertices.Length; i++)
         {
             //Q5c
-            HVector2D vert = new HVector2D(vertices[i].x, vertices[i].y);
+            HVector2D vert = new HVector2D(vertices[i].x, vertices[i].y); //create a new 2D vector 
             vert = transformMatrix * vert;
             vertices[i].x = vert.x;
-            vertices[i].y = vert.y; //update x and
+            vertices[i].y = vert.y; //update x and y of the vertex 
         }
 
         meshManager.clonedMesh.vertices = vertices;

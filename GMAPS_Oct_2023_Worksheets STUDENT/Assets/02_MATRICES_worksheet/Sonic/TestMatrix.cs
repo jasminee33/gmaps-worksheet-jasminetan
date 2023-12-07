@@ -10,7 +10,7 @@ public class TestMatrix : MonoBehaviour
 
     void Start()
     {
-        mat.SetIdentity();
+        mat.SetIdentity(); //create the matrix and calls the function SetIdentity
         mat.Print();
     }
 

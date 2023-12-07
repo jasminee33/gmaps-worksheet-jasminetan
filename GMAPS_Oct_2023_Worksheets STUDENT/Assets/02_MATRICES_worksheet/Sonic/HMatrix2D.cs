@@ -133,18 +133,18 @@ public class HMatrix2D
         //Q2b)
         for (int row = 0; row < 3; row++) 
             for (int col = 0; col < 3; col++)
-                if (left.Entries[row, col] != right.Entries[row, col]) //checks if the matrix elements is not the same 
-                    return false; // returns false
-        return true; // if it is the same then returns true since the left is == to right
+                if (left.Entries[row, col] != right.Entries[row, col]) //checks if the matrix elements is not the same based on the left and right value 
+                    return false; // if its not the same it will returns false
+        return true; // if it is the same then returns true 
     }
 
     public static bool operator !=(HMatrix2D left, HMatrix2D right)
     {
         for (int row = 0; row < 3; row++)
             for (int col = 0; col < 3; col++)
-                if (left.Entries[row, col] == right.Entries[row, col]) //checks if the matrix elements is not the same 
-                    return true; // returns false
-        return false; // if it is the same then returns true since the left is == to right
+                if (left.Entries[row, col] == right.Entries[row, col]) //checks if the matrix elements is same be compariing the left and right values
+                    return true; // if same return true
+        return false; // if it is not same then returns false
     }
 
     //public HMatrix2D transpose()
@@ -191,7 +191,7 @@ public class HMatrix2D
         SetIdentity(); // Start with the identity matrix
 
         // Set the translation 
-        Entries[0, 2] = transX;
+        Entries[0, 2] = transX; // translation only 1 and 2 of the row and of the last column changes 
         Entries[1, 2] = transY;
     }
 
@@ -203,9 +203,9 @@ public class HMatrix2D
 
         //Rotation matrix , only x and y axis are being changed
         Entries[0, 0] = Mathf.Cos(rad); // cos0
-    Entries[0, 1] = -Mathf.Sin(rad); // -sin0
-    Entries[1, 0] = Mathf.Sin(rad);  // sin0
-    Entries[1, 1] = Mathf.Cos(rad);  // cos0
+        Entries[0, 1] = -Mathf.Sin(rad); // -sin0
+        Entries[1, 0] = Mathf.Sin(rad);  // sin0
+        Entries[1, 1] = Mathf.Cos(rad);  // cos0
     }
 
     //public void SetScalingMat(float scaleX, float scaleY)
