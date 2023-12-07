@@ -7,12 +7,13 @@ public class PoolCue : MonoBehaviour
     public LineFactory lineFactory;
     public GameObject ballObject;
 
-    private Line drawnLine;
+    //needs to be put into the inspector for the line to work as it calls the Line Factory script and the ball game object
+    private Line drawnLine; 
     private Ball2D ball;
 
     private void Start()
     {
-        ball = ballObject.GetComponent<Ball2D>();
+        ball = ballObject.GetComponent<Ball2D>(); 
     }
 
     void Update()
@@ -20,14 +21,15 @@ public class PoolCue : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             var startLinePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Start line drawing
-            if (ball != null && ball.IsCollidingWith(startLinePos.x, startLinePos.y))  //gets the startLinePos x and y coordinates 
+            if (ball != null && ball.IsCollidingWith(startLinePos.x, startLinePos.y))  //checks if the ball not empty and gets the startLinePos x and y coordinates based on the input o the mouse
             {
-                drawnLine = lineFactory.GetLine(startLinePos, ball.transform.position, 0.3f, Color.black); //calls line factory to make line , starts line drawing  till the mouse psition
-                drawnLine.EnableDrawing(true);
+                drawnLine = lineFactory.GetLine(startLinePos, ball.transform.position, 0.3f, Color.black); //calls line factory to make line , starts line drawing  till the mouse position
+                drawnLine.EnableDrawing(true); //line is seen as it is active 
             }
         }
-        else if (Input.GetMouseButtonUp(0) && drawnLine != null)
+        else if (Input.GetMouseButtonUp(0) && drawnLine != null) 
         {
+            //when the mouse is not pressed then it will disable the line
             drawnLine.EnableDrawing(false);
 
             //update the velocity of the white ball.
